@@ -1,5 +1,8 @@
 package org.libmots;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Text {
 	private StringBuilder text;
 	
@@ -23,23 +26,13 @@ public class Text {
 	}
 	
 	protected void removeArticles() {
-		//TODO: use regex and remove the articles
+		Matcher m = Pattern.compile(" +a +| +an +| +the +").matcher(text.toString());
+		text = new StringBuilder(m.replaceAll(" "));
 	}
 	
 	protected void removePunctuations() {
-		//XXX: try to use regex
-		char ch;
-		
-		for(int i = 0; i < text.length(); i++) {
-			ch = text.charAt(i);
-			
-			if (ch == '.' || ch == ',' || ch == '?' || 
-					ch == '/' || ch == '\'' || ch == ';' ||
-					ch == ':' || ch == '\"' || ch == '-' ||
-					ch == '!') {
-				text.setCharAt(i, ' ');
-			}
-		}
+		Matcher m = Pattern.compile("[,/!<>\\?;':\\\"(.){}\\[\\]]").matcher(text.toString());
+		text = new StringBuilder(m.replaceAll(""));
 	}
 
 	public Text(String text) {
@@ -61,5 +54,6 @@ public class Text {
 	public void processText() {
 		toLowerCase();
 		removePunctuations();
+		removeArticles();
 	}
 }
