@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Text {
 	private StringBuilder text;
 	
-	/* TEXT PROCESSING FUNCTIONS */
+	/* --------------------- TEXT PROCESSING FUNCTIONS --------------------- */
 	
 	/**
 	 * Makes the text even, <i>i.e.</i> in the same case throughout
@@ -41,6 +41,8 @@ public class Text {
 		Matcher m = Pattern.compile("[,/!<>\\?;':\\\"(.){}\\[\\]]").matcher(text.toString());
 		text = new StringBuilder(m.replaceAll(""));
 	}
+	
+	/* ------------------ END OF TEXT PROCESSING FUNCTIONS ----------------- */
 
 	public Text(String text) {
 		this.text = new StringBuilder(text);
