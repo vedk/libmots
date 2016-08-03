@@ -9,6 +9,14 @@ public class Text {
 	/* --------------------- TEXT PROCESSING FUNCTIONS --------------------- */
 	
 	/**
+	 * Removes extra spaces
+	 */
+	protected void trimSpaces() {
+		Matcher m = Pattern.compile(" +").matcher(text.toString());
+		text = new StringBuilder(m.replaceAll(" "));
+	}
+	
+	/**
 	 * Makes the text even, <i>i.e.</i> in the same case throughout
 	 * This function doesn't use String.toLowerCase() for faster performance
 	 */
@@ -29,7 +37,7 @@ public class Text {
 	 * Removes the articles for the given text
 	 */
 	protected void removeArticles() {
-		Matcher m = Pattern.compile(" *[aA] +| *[aA]n +| *[tT]he +").matcher(text.toString());
+		Matcher m = Pattern.compile(" *a +| *an +| *the +").matcher(text.toString());
 		text = new StringBuilder(m.replaceAll(" "));
 	}
 	
@@ -46,10 +54,12 @@ public class Text {
 
 	public Text(String text) {
 		this.text = new StringBuilder(text);
+		processText();
 	}
 	
 	public Text(StringBuilder text) {
 		this.text = text;
+		processText();
 	}
 
 	public StringBuilder getText() {
@@ -58,11 +68,13 @@ public class Text {
 
 	public void setText(StringBuilder text) {
 		this.text = text;
+		processText();
 	}
 	
-	public void processText() {
+	protected void processText() {
 		toLowerCase();
 		removePunctuations();
 		removeArticles();
+		trimSpaces();
 	}
 }
