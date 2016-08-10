@@ -3,6 +3,13 @@ package org.libmots;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class represents Text, which can be from any source.
+ * Currently this class works with only the English Language
+ * 
+ * @author Ved Khandekar
+ * @version 1.0
+ */
 public class Text {
 	private StringBuilder text;
 	
