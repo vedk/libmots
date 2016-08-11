@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
  */
 public class Text {
 	private StringBuilder text;
+	private String source;
 	
 	/* --------------------- TEXT PROCESSING FUNCTIONS --------------------- */
 	
@@ -59,13 +60,15 @@ public class Text {
 	
 	/* ------------------ END OF TEXT PROCESSING FUNCTIONS ----------------- */
 
-	public Text(String text) {
+	public Text(String text, String source) {
 		this.text = new StringBuilder(text);
+		setSource(source);
 		processText();
 	}
 	
-	public Text(StringBuilder text) {
+	public Text(StringBuilder text, String source) {
 		this.text = text;
+		setSource(source);
 		processText();
 	}
 
@@ -78,6 +81,14 @@ public class Text {
 		processText();
 	}
 	
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
+
 	protected void processText() {
 		toLowerCase();
 		removePunctuations();

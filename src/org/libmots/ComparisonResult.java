@@ -13,6 +13,12 @@ public class ComparisonResult {
 		this.wordsInA = wordsInA;
 		this.wordsInB = wordsInB;
 	}
+	
+	public ComparisonResult(ComparisonResult c) {
+		this.matches = c.matches;
+		this.wordsInA = c.wordsInA;
+		this.wordsInB = c.wordsInB;
+	}
 
 	public int getMatches() {
 		return matches;
