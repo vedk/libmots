@@ -10,7 +10,6 @@ public class TextComparator {
 	 */
 	public static ComparisonResult compareTexts(Text t1, Text t2) {
 		int matches = 0;
-		float AtoB, BtoA;
 		
 		String[] parts1 = t1.getText().toString().split(" ");
 		String[] parts2 = t2.getText().toString().split(" ");
