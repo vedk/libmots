@@ -45,7 +45,7 @@ public class Text {
 	 * Removes the articles for the given text
 	 */
 	protected void removeArticles() {
-		Matcher m = Pattern.compile(" *a +| *an +| *the +").matcher(text.toString());
+		Matcher m = Pattern.compile(" a | an | the ").matcher(text.toString());
 		text = new StringBuilder(m.replaceAll(" "));
 	}
 	
